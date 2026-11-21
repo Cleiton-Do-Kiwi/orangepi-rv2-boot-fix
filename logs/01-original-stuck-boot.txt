@@ -1,0 +1,173 @@
+sudo picocom -b 115200 /dev/ttyUSB0
+Place your finger on the fingerprint reader
+picocom v2024-07
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+txdelay is     : 0 ns
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : /nix/store/lw6h3a8q2sqs40qndxjk8qjb1qkxvilw-lrzsz-0.12.20/bin/sz -vv
+receive_cmd is : /nix/store/lw6h3a8q2sqs40qndxjk8qjb1qkxvilw-lrzsz-0.12.20/bin/rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+minimal cmds is: no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+
+(initramfs) 
+(initramfs) 
+(initramfs) 
+(initramfs) 
+(initramfs) 
+(initramfs) 
+(initramfs) sys: 0x200
+try sd...
+bm:3
+j...
+
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.313] DDR type LPDDR4X
+[   0.315] set ddr tx odt to 80ohm!
+[   0.326] lpddr silicon init consume 11ms
+[   0.327] Change DDR data rate to 2400MT/s
+[   0.560] Boot from fit configuration x1_orangepi-rv2
+[   0.562] ## Checking hash(es) for config conf_18 ... OK
+[   0.568] ## Checking hash(es) for Image uboot ... crc32+ OK
+[   0.579] ## Checking hash(es) for Image fdt_18 ... crc32+ OK
+[   0.601] ## Checking hash(es) for config config_1 ... OK
+[   0.604] ## Checking hash(es) for Image opensbi ... crc32+ OK
+[   0.648] 
+
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+
+[   0.655] CPU:   rv64imafdcv
+[   0.658] Model: ky x1 orangepi-rv2 board
+[   0.662] DRAM:  DDR size = 4096 MB
+[   0.665] 4 GiB
+[   0.709] reset driver probe start 
+[   0.711] reset driver probe finish 
+[   0.733] Core:  414 devices, 29 uclasses, devicetree: board
+[   0.746] WDT:   Started PMIC_WDT with servicing (60s timeout)
+[   0.750] WDT:   Started watchdog@D4080000 with servicing (60s timeout)
+[   0.759] MMC:   sdh@d4280000: probe done.
+[   0.764] sdh@d4281000: probe done.
+[   0.764] sdh@d4280000: 0, sdh@d4281000: 2
+[   0.769] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+
+[   0.861] initialize_console_log_buffer
+[   0.863] Have allocated memory for console log buffer
+[   0.868] In:    serial
+[   0.870] Out:   serial
+[   0.872] Err:   serial
+[   0.875] Default to 100kHz
+[   0.993] Found 2 valid MAC addresses.
+[   0.993] TLV item: product_name = x1_orangepi-rv2
+[   0.998] TLV item: ddr_cs_num = 1
+[   1.005] Found device 'hdmi@c0400500', disp_uc_priv=000000007dea6b80
+[   1.113] HDMI cannot get HPD signal
+[   1.113] spacemit_display_init: device 'dpu@c0340000' display won't probe (ret=-1)
+[   1.232] HDMI cannot get HPD signal
+[   1.232] display devices not found or not probed yet: -1
+[   1.237] All buttons probed successfully
+[   1.244] k1x_qspi spi@d420c000: qspi iobase:0x0x00000000d420c000, ahb_addr:0x0x00000000b8000000, max_hz:26500000Hz
+[   1.251] k1x_qspi spi@d420c000: rx buf size:128, tx buf size:256, ahb buf size=512
+[   1.259] k1x_qspi spi@d420c000: AHB read enabled
+[   1.264] k1x_qspi spi@d420c000: bus clock: 26500000Hz, PMUap reg[0xd4282860]:0x0000075b
+[   1.271] k1x_qspi spi@d420c000: AHB buf size: 512
+[   1.276] SF: Detected XM25QU128C with page size 256 Bytes, erase size 64 KiB, total 16 MiB
+List of MTD devices:
+[   1.286] * nor0
+[   1.288]   - device: flash@0
+[   1.290]   - parent: spi@d420c000
+[   1.294]   - driver: jedec_spi_nor
+[   1.297]   - path: /soc/spi@d420c000/flash@0
+[   1.301]   - type: NOR flash
+[   1.304]   - block size: 0x10000 bytes
+[   1.308]   - min I/O: 0x1 bytes
+[   1.311]   - 0x000000000000-0x000001000000 : "nor0"
+[   1.315] 	  - 0x000000000000-0x000000010000 : "bootinfo"
+[   1.321] 	  - 0x000000010000-0x000000020000 : "private"
+[   1.326] 	  - 0x000000020000-0x000000060000 : "fsbl"
+[   1.331] 	  - 0x000000060000-0x000000070000 : "env"
+[   1.335] 	  - 0x000000070000-0x0000000a0000 : "opensbi"
+[   1.340] 	  - 0x0000000a0000-0x000001000000 : "uboot"
+[   1.347] Read PMIC reg ab value f0
+[   1.349] Failed to get fastboot key config: -19
+[   1.353] Net flash mode not enabled
+[   1.356] Failed to probe HUSB239: -19
+[   1.360] Continue to boot
+[   1.363] RGMII interface
+[   1.365] eth0: ethernet@cac80000
+[   1.368] MAC mapping file path not set in environment
+[   1.373] K1X: :_load_env_from_blk
+[   1.393] Failed to load 'env_k1-x.txt'
+[   1.394] Net:   eth0: ethernet@cac80000
+[   1.399] Hit any key to stop autoboot:  0 
+
+[   2.406] Loading K1 environment
+[   2.452] Booting from mmc 0:1 ...
+[   2.452] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.488] 1:	Armbian_community
+[   2.488] Retrieving file: /boot/uInitrd
+[   3.349] Retrieving file: /boot/Image
+[   4.350] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=1 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.368] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.422]    Uncompressing Kernel Image
+[   4.805] Moving Image from 0x10000000 to 0x200000, end=301c000
+[   4.829] ## Loading init Ramdisk from Legacy Image at 21000000 ...
+[   4.833]    Image Name:   uInitrd
+[   4.836]    Image Type:   RISC-V Linux RAMDisk Image (gzip compressed)
+[   4.842]    Data Size:    13632522 Bytes = 13 MiB
+[   4.847]    Load Address: 00000000
+[   4.850]    Entry Point:  00000000
+   Verifying Checksum ... OK
+[   4.915] ## Flattened Device Tree blob at 31000000
+[   4.917]    Booting using the fdt blob at 0x31000000
+[   4.922]    Loading Ramdisk to 7d084000, end 7dd8440a ... OK
+[   4.937]    Loading Device Tree to 000000007d064000, end 000000007d083097 ... OK
+
+Starting kernel ...
+
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+done.
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: recovering journal
+armbi_root: clean, 303322/3624816 files, 13425457/15432704 blocks
+done.
+done.
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Timed out while waiting for udev queue to empty.
+done.
+run-init: opening console: No such file or directory
+Target filesystem doesn't have requested /sbin/init.
+run-init: opening console: No such file or directory
+run-init: opening console: No such file or directory
+run-init: opening console: No such file or directory
+run-init: opening console: No such file or directory
+run-init: opening console: No such file or directory
+No init found. Try passing init= bootarg.
+(initramfs) 

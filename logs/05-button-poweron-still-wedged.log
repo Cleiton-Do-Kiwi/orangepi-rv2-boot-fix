@@ -1,0 +1,202 @@
+picocom v2024-07
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+txdelay is     : 0 ns
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : yes
+hangup is      : no
+nolock is      : no
+send_cmd is    : /nix/store/lw6h3a8q2sqs40qndxjk8qjb1qkxvilw-lrzsz-0.12.20/bin/sz -vv
+receive_cmd is : /nix/store/lw6h3a8q2sqs40qndxjk8qjb1qkxvilw-lrzsz-0.12.20/bin/rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+minimal cmds is: no
+
+!! STDIN is not a TTY !! Continue anyway...
+Type [C-a] [C-h] to see available commands
+Terminal ready
+sys: 0x200
+try sd...
+bm:3
+j...
+
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.319] DDR type LPDDR4X
+[   0.320] set ddr tx odt to 80ohm!
+[   0.331] lpddr silicon init consume 11ms
+[   0.332] Change DDR data rate to 2400MT/s
+[   0.566] Boot from fit configuration x1_orangepi-rv2
+[   0.568] ## Checking hash(es) for config conf_18 ... OK
+[   0.574] ## Checking hash(es) for Image uboot ... crc32+ OK
+[   0.585] ## Checking hash(es) for Image fdt_18 ... crc32+ OK
+[   0.607] ## Checking hash(es) for config config_1 ... OK
+[   0.609] ## Checking hash(es) for Image opensbi ... crc32+ OK
+[   0.653] 
+
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+
+[   0.661] CPU:   rv64imafdcv
+[   0.663] Model: ky x1 orangepi-rv2 board
+[   0.667] DRAM:  DDR size = 4096 MB
+[   0.671] 4 GiB
+[   0.715] reset driver probe start 
+[   0.716] reset driver probe finish 
+[   0.739] Core:  414 devices, 29 uclasses, devicetree: board
+[   0.752] WDT:   Started PMIC_WDT with servicing (60s timeout)
+[   0.756] WDT:   Started watchdog@D4080000 with servicing (60s timeout)
+[   0.765] MMC:   sdh@d4280000: probe done.
+[   0.769] sdh@d4281000: probe done.
+[   0.770] sdh@d4280000: 0, sdh@d4281000: 2
+[   0.774] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+
+[   0.867] initialize_console_log_buffer
+[   0.868] Have allocated memory for console log buffer
+[   0.873] In:    serial
+[   0.876] Out:   serial
+[   0.878] Err:   serial
+[   0.881] Default to 100kHz
+[   0.999] Found 2 valid MAC addresses.
+[   0.999] TLV item: product_name = x1_orangepi-rv2
+[   1.004] TLV item: ddr_cs_num = 1
+[   1.011] Found device 'hdmi@c0400500', disp_uc_priv=000000007dea6b80
+[   1.119] HDMI cannot get HPD signal
+[   1.119] spacemit_display_init: device 'dpu@c0340000' display won't probe (ret=-1)
+[   1.238] HDMI cannot get HPD signal
+[   1.238] display devices not found or not probed yet: -1
+[   1.243] All buttons probed successfully
+[   1.250] k1x_qspi spi@d420c000: qspi iobase:0x0x00000000d420c000, ahb_addr:0x0x00000000b8000000, max_hz:26500000Hz
+[   1.257] k1x_qspi spi@d420c000: rx buf size:128, tx buf size:256, ahb buf size=512
+[   1.265] k1x_qspi spi@d420c000: AHB read enabled
+[   1.270] k1x_qspi spi@d420c000: bus clock: 26500000Hz, PMUap reg[0xd4282860]:0x0000075b
+[   1.277] k1x_qspi spi@d420c000: AHB buf size: 512
+[   1.282] SF: Detected XM25QU128C with page size 256 Bytes, erase size 64 KiB, total 16 MiB
+List of MTD devices:
+[   1.292] * nor0
+[   1.294]   - device: flash@0
+[   1.296]   - parent: spi@d420c000
+[   1.300]   - driver: jedec_spi_nor
+[   1.303]   - path: /soc/spi@d420c000/flash@0
+[   1.307]   - type: NOR flash
+[   1.310]   - block size: 0x10000 bytes
+[   1.314]   - min I/O: 0x1 bytes
+[   1.317]   - 0x000000000000-0x000001000000 : "nor0"
+[   1.321] 	  - 0x000000000000-0x000000010000 : "bootinfo"
+[   1.327] 	  - 0x000000010000-0x000000020000 : "private"
+[   1.332] 	  - 0x000000020000-0x000000060000 : "fsbl"
+[   1.337] 	  - 0x000000060000-0x000000070000 : "env"
+[   1.341] 	  - 0x000000070000-0x0000000a0000 : "opensbi"
+[   1.346] 	  - 0x0000000a0000-0x000001000000 : "uboot"
+[   1.353] Read PMIC reg ab value f4
+[   1.355] Failed to get fastboot key config: -19
+[   1.359] Net flash mode not enabled
+[   1.363] Failed to probe HUSB239: -19
+[   1.366] Continue to boot
+[   1.369] RGMII interface
+[   1.371] eth0: ethernet@cac80000
+[   1.374] MAC mapping file path not set in environment
+[   1.379] K1X: :_load_env_from_blk
+[   1.399] Failed to load 'env_k1-x.txt'
+[   1.400] Net:   eth0: ethernet@cac80000
+[   1.405] Hit any key to stop autoboot:  1  0 
+
+[   2.412] Loading K1 environment
+[   2.420] mmc fail to set block count
+[   2.420]  ** fs_devread read error - block
+[   2.424] Failed to mount ext2 filesystem...
+[   2.457] Booting from mmc 0:1 ...
+[   2.457] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.492] 1:	Armbian_community
+[   2.492] Retrieving file: /boot/uInitrd
+[   2.524] mmc fail to set block count
+[   2.524]  ** fs_devread read error - block
+[   2.528] Skipping Armbian_community for failure retrieving initrd
+[   2.539] pcie_dw_k1x pcie@ca400000: has no power-on-status flag, use default.
+[   2.544] Now init Rterm...
+[   2.546] pcie prot id = 1, porta_init_done = 0
+[   2.550] Now waiting portA resister tuning done...
+[   2.555] porta redonly_reg2: 00005d26
+[   2.559] pcie_rcal = 0x00005d26
+[   2.562] pcie port id = 1, lane num = 2
+[   2.565] Now int init_puphy...
+[   2.568] waiting pll lock...
+[   2.571] Now finish init_puphy....
+[   2.574] pcie_dw_k1x pcie@ca400000: Unable to get phy0
+[   2.579] pcie_dw_k1x pcie@ca400000: Unable to get phy1
+[   2.584] pcie_dw_k1x pcie@ca400000: PCIe interface power on, set gpio 116 to 1
+[   3.693] PCIE-0: Link down
+[   3.702] pcie_dw_k1x pcie@ca800000: has no power on gpio.
+[   3.704] pcie_dw_k1x pcie@ca800000: has no power-on-status flag, use default.
+[   3.712] Now init Rterm...
+[   3.714] pcie prot id = 2, porta_init_done = 0
+[   3.718] Now waiting portA resister tuning done...
+[   3.723] porta redonly_reg2: 00005d26
+[   3.726] pcie_rcal = 0x00005d26
+[   3.730] pcie port id = 2, lane num = 2
+[   3.733] Now int init_puphy...
+[   3.736] waiting pll lock...
+[   3.739] Now finish init_puphy....
+[   3.742] pcie_dw_k1x pcie@ca800000: Unable to get phy0
+[   3.747] pcie_dw_k1x pcie@ca800000: Unable to get phy1
+[   3.882] PCIE-1: Link up (Gen2-x2, Bus1)
+[   3.897] pcie_dw_k1x pcie@ca400000: has no power-on-status flag, use default.
+[   3.901] Now init Rterm...
+[   3.904] pcie prot id = 1, porta_init_done = 0
+[   3.908] Now waiting portA resister tuning done...
+[   3.913] porta redonly_reg2: 00005d26
+[   3.916] pcie_rcal = 0x00005d26
+[   3.919] pcie port id = 1, lane num = 2
+[   3.923] Now int init_puphy...
+[   3.926] waiting pll lock...
+[   3.929] Now finish init_puphy....
+[   3.932] pcie_dw_k1x pcie@ca400000: Unable to get phy0
+[   3.937] pcie_dw_k1x pcie@ca400000: Unable to get phy1
+[   3.942] pcie_dw_k1x pcie@ca400000: PCIe interface power on, set gpio 116 to 1
+[   5.050] PCIE-0: Link down
+[   5.054] 
+Partition Map for NVMe device 0  --   Partition Type: EFI
+
+[   5.058] Part	Start LBA	End LBA		Name
+[   5.061] 	Attributes
+[   5.063] 	Type GUID
+[   5.065] 	Partition GUID
+[   5.067]   1	0x00000800	0x0ee7bfff	"EXT4-partition"
+[   5.072] 	attrs:	0x0000000000000000
+[   5.075] 	type:	<UUID>
+		(linux)
+[   5.081] 	guid:	<NVME_PARTUUID>
+[   5.088] Couldn't find partition mmc 1:1
+[   5.090] Couldn't find partition mmc 1:1
+[   5.094] Couldn't find partition mmc 1:1
+[   5.098] Couldn't find partition mmc 1:1
+[   5.101] Couldn't find partition mmc 1:1
+[   5.137] Card did not respond to voltage select! : -110
+[   5.139] mmc_init: -95, time 34
+[   5.142] Couldn't find partition mmc 2:1
+[   5.176] Card did not respond to voltage select! : -110
+[   5.179] mmc_init: -95, time 33
+[   5.182] Couldn't find partition mmc 2:1
+[   5.217] Card did not respond to voltage select! : -110
+[   5.219] mmc_init: -95, time 34
+[   5.222] Couldn't find partition mmc 2:1
+[   5.257] Card did not respond to voltage select! : -110
+[   5.259] mmc_init: -95, time 33
+[   5.262] Couldn't find partition mmc 2:1
+[   5.297] Card did not respond to voltage select! : -110
+[   5.299] mmc_init: -95, time 33
+[   5.302] Couldn't find partition mmc 2:1
+=> 
+Terminating...
+Skipping tty reset...
+Picocom was killed

@@ -1,0 +1,112 @@
+picocom v2024-07
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+txdelay is     : 0 ns
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : yes
+hangup is      : no
+nolock is      : no
+send_cmd is    : /nix/store/lw6h3a8q2sqs40qndxjk8qjb1qkxvilw-lrzsz-0.12.20/bin/sz -vv
+receive_cmd is : /nix/store/lw6h3a8q2sqs40qndxjk8qjb1qkxvilw-lrzsz-0.12.20/bin/rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+minimal cmds is: no
+
+!! STDIN is not a TTY !! Continue anyway...
+Type [C-a] [C-h] to see available commands
+Terminal ready
+[  87.677] run autoboot
+
+[  87.678] Loading K1 environment
+[  87.693] ** No partition table - mmc 0 **
+[  87.694] Couldn't find partition mmc 0:1
+[  87.711] mmc fail to set block count
+[  87.712]  ** fs_devread read error - block
+[  87.716] Failed to mount ext2 filesystem...
+[  87.731] mmc fail to set block count
+[  87.731]  ** fs_devread read error - block
+[  87.735] Failed to mount ext2 filesystem...
+[  87.747] mmc fail to set block count
+[  87.747]  ** fs_devread read error - block
+[  87.751] Failed to mount ext2 filesystem...
+[  87.764] mmc fail to set block count
+[  87.765]  ** fs_devread read error - block
+[  87.769] Failed to mount ext2 filesystem...
+[  87.778] pcie_dw_k1x pcie@ca400000: has no power-on-status flag, use default.
+[  87.782] Now init Rterm...
+[  87.785] pcie prot id = 1, porta_init_done = 0
+[  87.789] Now waiting portA resister tuning done...
+[  87.794] porta redonly_reg2: 00005d26
+[  87.797] pcie_rcal = 0x00005d26
+[  87.800] pcie port id = 1, lane num = 2
+[  87.804] Now int init_puphy...
+[  87.807] waiting pll lock...
+[  87.810] Now finish init_puphy....
+[  87.813] pcie_dw_k1x pcie@ca400000: Unable to get phy0
+[  87.818] pcie_dw_k1x pcie@ca400000: Unable to get phy1
+[  87.823] pcie_dw_k1x pcie@ca400000: PCIe interface power on, set gpio 116 to 1
+[  88.931] PCIE-0: Link down
+[  88.940] pcie_dw_k1x pcie@ca400000: has no power-on-status flag, use default.
+[  88.944] Now init Rterm...
+[  88.947] pcie prot id = 1, porta_init_done = 0
+[  88.951] Now waiting portA resister tuning done...
+[  88.956] porta redonly_reg2: 00005d26
+[  88.959] pcie_rcal = 0x00005d26
+[  88.962] pcie port id = 1, lane num = 2
+[  88.966] Now int init_puphy...
+[  88.969] waiting pll lock...
+[  88.972] Now finish init_puphy....
+[  88.975] pcie_dw_k1x pcie@ca400000: Unable to get phy0
+[  88.980] pcie_dw_k1x pcie@ca400000: Unable to get phy1
+[  88.985] pcie_dw_k1x pcie@ca400000: PCIe interface power on, set gpio 116 to 1
+[  90.093] PCIE-0: Link down
+[  90.097] 
+Partition Map for NVMe device 0  --   Partition Type: EFI
+
+[  90.101] Part	Start LBA	End LBA		Name
+[  90.104] 	Attributes
+[  90.106] 	Type GUID
+[  90.108] 	Partition GUID
+[  90.110]   1	0x00000800	0x0ee7bfff	"EXT4-partition"
+[  90.115] 	attrs:	0x0000000000000000
+[  90.118] 	type:	<UUID>
+		(linux)
+[  90.124] 	guid:	<NVME_PARTUUID>
+[  90.130] Couldn't find partition mmc 1:1
+[  90.133] Couldn't find partition mmc 1:1
+[  90.137] Couldn't find partition mmc 1:1
+[  90.141] Couldn't find partition mmc 1:1
+[  90.144] Couldn't find partition mmc 1:1
+[  90.179] Card did not respond to voltage select! : -110
+[  90.181] mmc_init: -95, time 33
+[  90.184] Couldn't find partition mmc 2:1
+[  90.219] Card did not respond to voltage select! : -110
+[  90.222] mmc_init: -95, time 34
+[  90.225] Couldn't find partition mmc 2:1
+[  90.260] Card did not respond to voltage select! : -110
+[  90.262] mmc_init: -95, time 34
+[  90.265] Couldn't find partition mmc 2:1
+[  90.300] Card did not respond to voltage select! : -110
+[  90.302] mmc_init: -95, time 33
+[  90.305] Couldn't find partition mmc 2:1
+[  90.339] Card did not respond to voltage select! : -110
+[  90.341] mmc_init: -95, time 32
+[  90.344] Couldn't find partition mmc 2:1
+=> 
+** read zero bytes from stdin **
+
+Terminating...
+Skipping tty reset...
+Thanks for using picocom

@@ -1,0 +1,39 @@
+### /var/tmp/fix-initrd.log (onboard patch attempt + source-script patch)
+===== START Sat Nov 21 03:40:46 UTC 2026 =====
+df: Warning: cannot read table of mounted file systems: No such file or directory
+Filesystem      Size  Used Avail Use% Mounted on
+-                58G   51G  7.1G  88% /
+--- source scripts after patch ---
+/usr/share/initramfs-tools/scripts/functions:	udevadm settle --timeout="${1:-20}" || true
+/usr/share/initramfs-tools/scripts/init-top/udev:udevadm settle --timeout=20 || true
+/usr/share/initramfs-tools/scripts/init-bottom/udev:udevadm settle --timeout=180 || true
+--- extract current initrd ---
+
+gzip: /boot/initrd.img-6.18.55-current-spacemit: not in gzip format
+cpio: premature end of archive
+===== START Sat Nov 21 03:42:39 UTC 2026 =====
+df: Warning: cannot read table of mounted file systems: No such file or directory
+Filesystem      Size  Used Avail Use% Mounted on
+-                58G   51G  7.1G  88% /
+initrd magic:  30 37 30 37 30 31
+--- source scripts after patch ---
+/usr/share/initramfs-tools/scripts/functions:	udevadm settle --timeout="${1:-20}" || true
+/usr/share/initramfs-tools/scripts/init-top/udev:udevadm settle --timeout=20 || true
+/usr/share/initramfs-tools/scripts/init-bottom/udev:udevadm settle --timeout=180 || true
+--- extract current initrd (raw cpio) ---
+extracted entries: 166
+--- patch extracted initrd copy ---
+sed: can't read scripts/functions: No such file or directory
+
+### /var/tmp/update-initramfs.log (regeneration)
+update-initramfs: Generating /boot/initrd.img-6.18.55-current-spacemit
+update-initramfs: Armbian: Converting to u-boot format: /boot/uInitrd-6.18.55-current-spacemit
+Image Name:   uInitrd
+Created:      Sat Nov 21 00:45:30 2026
+Image Type:   RISC-V Linux RAMDisk Image (gzip compressed)
+Data Size:    13630466 Bytes = 13311.00 KiB = 13.00 MiB
+Load Address: 00000000
+Entry Point:  00000000
+update-initramfs: Armbian: Symlinking /boot/uInitrd-6.18.55-current-spacemit to /boot/uInitrd
+'/boot/uInitrd' -> 'uInitrd-6.18.55-current-spacemit'
+update-initramfs: Armbian: done.

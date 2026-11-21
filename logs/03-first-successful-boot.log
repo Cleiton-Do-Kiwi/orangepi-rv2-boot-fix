@@ -1,0 +1,48 @@
+sys: 0x200
+try sd...
+bm:3
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.571] Boot from fit configuration x1_orangepi-rv2
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.779] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+[   1.003] Found 2 valid MAC addresses.
+[   1.378] MAC mapping file path not set in environment
+[   2.416] Loading K1 environment
+[   2.462] Booting from mmc 0:1 ...
+[   2.462] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.498] Retrieving file: /boot/uInitrd
+[   3.358] Retrieving file: /boot/Image
+[   4.359] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.378] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.432]    Uncompressing Kernel Image
+Starting kernel ...
+[    0.000000] Linux version 6.18.55-current-spacemit (build@armbian) (riscv64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Sat Oct  3 13:35:39 UTC 2026
+[    0.000000] Kernel command line: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles swiotlb=65536 rdinit=/init
+[    3.458782] mmc0: pass window [9 65) 
+[    3.467137] mmc0: pass window [68 209) 
+[    3.471105] mmc0: pass window [210 211) 
+[    3.475148] mmc0: pass window [212 213) 
+[    3.479189] mmc0: pass window [214 215) 
+[    3.483448] mmc0: pass window [223 224) 
+[    3.488391] mmc0: pass window [226 255) 
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: recovering journal
+armbi_root: clean, 303906/3624816 files, 13441650/15432704 blocks
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Failed to send exit request: Connection refused
+[  OK  ] Created slice system-systemd\x2dfs…slice - Slice /system/systemd-fsck.
+         Starting systemd-udevd.service - R…ager for Device Events and Files...
+
+OrangePI login:  (reached multi-user)

@@ -1,0 +1,311 @@
+[  586.393934] reboot: Power down
+sys: 0x200
+try sd...
+bm:3
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.563] Boot from fit configuration x1_orangepi-rv2
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.771] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+[   0.996] Found 2 valid MAC addresses.
+[   1.371] MAC mapping file path not set in environment
+[   2.409] Loading K1 environment
+[   2.455] Booting from mmc 0:1 ...
+[   2.456] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.491] Retrieving file: /boot/uInitrd
+[   3.365] Retrieving file: /boot/Image
+[   4.366] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.384] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.438]    Uncompressing Kernel Image
+Starting kernel ...
+[    0.000000] Linux version 6.18.55-current-spacemit (build@armbian) (riscv64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Sat Oct  3 13:35:39 UTC 2026
+[    0.000000] Kernel command line: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles swiotlb=65536 rdinit=/init
+[    3.457503] mmc0: pass window [12 65) 
+[    3.465837] mmc0: pass window [69 211) 
+[    3.469791] mmc0: pass window [212 213) 
+[    3.473836] mmc0: pass window [214 215) 
+[    3.477888] mmc0: pass window [216 217) 
+[    3.483012] mmc0: pass window [227 255) 
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: clean, 304016/3624816 files, 13669632/15432704 blocks
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Timed out while waiting for udev queue to empty.
+[  OK  ] Created slice system-systemd\x2dfs…slice - Slice /system/systemd-fsck.
+         Starting systemd-udevd.service - R…ager for Device Events and Files...
+OrangePI login: [  OK  ] Removed slice system-modprobe.slice - Slice /system/modprobe.
+[  113.105071] reboot: Power down
+sys: 0x200
+try sd...
+bm:3
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.564] Boot from fit configuration x1_orangepi-rv2
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.773] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+[   0.997] Found 2 valid MAC addresses.
+[   1.372] MAC mapping file path not set in environment
+[   2.410] Loading K1 environment
+[   2.456] Booting from mmc 0:1 ...
+[   2.456] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.492] Retrieving file: /boot/uInitrd
+[   3.365] Retrieving file: /boot/Image
+[   4.366] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.384] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.438]    Uncompressing Kernel Image
+Starting kernel ...
+[    0.000000] Linux version 6.18.55-current-spacemit (build@armbian) (riscv64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Sat Oct  3 13:35:39 UTC 2026
+[    0.000000] Kernel command line: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles swiotlb=65536 rdinit=/init
+[    3.453727] mmc0: pass window [11 65) 
+[    3.462158] mmc0: pass window [69 209) 
+[    3.466114] mmc0: pass window [210 211) 
+[    3.470159] mmc0: pass window [212 213) 
+[    3.474201] mmc0: pass window [214 215) 
+[    3.478246] mmc0: pass window [216 217) 
+[    3.483407] mmc0: pass window [225 255) 
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: clean, 304016/3624816 files, 13669502/15432704 blocks
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Timed out while waiting for udev queue to empty.
+[  OK  ] Created slice system-systemd\x2dfs…slice - Slice /system/systemd-fsck.
+         Starting systemd-udevd.service - R…ager for Device Events and Files...
+OrangePI login: [  OK  ] Removed slice system-modprobe.slice - Slice /system/modprobe.
+[   98.977486] reboot: Power down
+sys: 0x200
+try sd...
+bm:3
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.562] Boot from fit configuration x1_orangepi-rv2
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.770] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+[   0.994] Found 2 valid MAC addresses.
+[   1.369] MAC mapping file path not set in environment
+[   2.407] Loading K1 environment
+[   2.453] Booting from mmc 0:1 ...
+[   2.453] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.489] Retrieving file: /boot/uInitrd
+[   3.353] Retrieving file: /boot/Image
+[   4.354] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.372] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.426]    Uncompressing Kernel Image
+Starting kernel ...
+[    0.000000] Linux version 6.18.55-current-spacemit (build@armbian) (riscv64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Sat Oct  3 13:35:39 UTC 2026
+[    0.000000] Kernel command line: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles swiotlb=65536 rdinit=/init
+[    3.448972] mmc0: pass window [11 65) 
+[    3.457465] mmc0: pass window [68 210) 
+[    3.461429] mmc0: pass window [211 212) 
+[    3.465473] mmc0: pass window [213 214) 
+[    3.469510] mmc0: pass window [215 216) 
+[    3.474703] mmc0: pass window [225 255) 
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: clean, 304018/3624816 files, 13670000/15432704 blocks
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Timed out while waiting for udev queue to empty.
+[  OK  ] Created slice system-systemd\x2dfs…slice - Slice /system/systemd-fsck.
+         Starting systemd-udevd.service - R…ager for Device Events and Files...
+OrangePI login: [  OK  ] Removed slice system-modprobe.slice - Slice /system/modprobe.
+[  101.849063] reboot: Power down
+sys: 0x200
+try sd...
+bm:3
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.568] Boot from fit configuration x1_orangepi-rv2
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.776] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+[   1.000] Found 2 valid MAC addresses.
+[   1.375] MAC mapping file path not set in environment
+[   2.413] Loading K1 environment
+[   2.459] Booting from mmc 0:1 ...
+[   2.459] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.495] Retrieving file: /boot/uInitrd
+[   3.359] Retrieving file: /boot/Image
+[   4.360] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.378] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.432]    Uncompressing Kernel Image
+Starting kernel ...
+[    0.000000] Linux version 6.18.55-current-spacemit (build@armbian) (riscv64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Sat Oct  3 13:35:39 UTC 2026
+[    0.000000] Kernel command line: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles swiotlb=65536 rdinit=/init
+[    3.452719] mmc0: pass window [13 65) 
+[    3.461210] mmc0: pass window [68 210) 
+[    3.465168] mmc0: pass window [211 212) 
+[    3.469213] mmc0: pass window [213 214) 
+[    3.473259] mmc0: pass window [215 216) 
+[    3.478468] mmc0: pass window [225 255) 
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: clean, 304018/3624816 files, 13669815/15432704 blocks
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Timed out while waiting for udev queue to empty.
+[  OK  ] Created slice system-systemd\x2dfs…slice - Slice /system/systemd-fsck.
+         Starting systemd-udevd.service - R…ager for Device Events and Files...
+OrangePI login: [  OK  ] Removed slice system-modprobe.slice - Slice /system/modprobe.
+[   97.065545] reboot: Power down
+sys: 0x200
+try sd...
+bm:3
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.569] Boot from fit configuration x1_orangepi-rv2
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.777] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+[   1.001] Found 2 valid MAC addresses.
+[   1.376] MAC mapping file path not set in environment
+[   2.414] Loading K1 environment
+[   2.460] Booting from mmc 0:1 ...
+[   2.460] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.496] Retrieving file: /boot/uInitrd
+[   3.360] Retrieving file: /boot/Image
+[   4.361] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.380] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.434]    Uncompressing Kernel Image
+Starting kernel ...
+[    0.000000] Linux version 6.18.55-current-spacemit (build@armbian) (riscv64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Sat Oct  3 13:35:39 UTC 2026
+[    0.000000] Kernel command line: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles swiotlb=65536 rdinit=/init
+[    3.456543] mmc0: pass window [13 14) 
+[    3.461995] mmc0: pass window [16 65) 
+[    3.470466] mmc0: pass window [68 211) 
+[    3.474421] mmc0: pass window [212 213) 
+[    3.478456] mmc0: pass window [214 215) 
+[    3.482514] mmc0: pass window [216 217) 
+[    3.487720] mmc0: pass window [226 255) 
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: clean, 304020/3624816 files, 13670309/15432704 blocks
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Timed out while waiting for udev queue to empty.
+[  OK  ] Created slice system-systemd\x2dfs…slice - Slice /system/systemd-fsck.
+         Starting systemd-udevd.service - R…ager for Device Events and Files...
+OrangePI login: [  OK  ] Removed slice system-modprobe.slice - Slice /system/modprobe.
+[   99.191640] reboot: Power down
+sys: 0x200
+try sd...
+bm:3
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.566] Boot from fit configuration x1_orangepi-rv2
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.774] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+[   0.998] Found 2 valid MAC addresses.
+[   1.373] MAC mapping file path not set in environment
+[   2.411] Loading K1 environment
+[   2.457] Booting from mmc 0:1 ...
+[   2.457] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.493] Retrieving file: /boot/uInitrd
+[   3.357] Retrieving file: /boot/Image
+[   4.358] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.376] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.430]    Uncompressing Kernel Image
+Starting kernel ...
+[    0.000000] Linux version 6.18.55-current-spacemit (build@armbian) (riscv64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Sat Oct  3 13:35:39 UTC 2026
+[    0.000000] Kernel command line: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles swiotlb=65536 rdinit=/init
+[    3.452286] mmc0: pass window [13 14) 
+[    3.457863] mmc0: pass window [16 65) 
+[    3.466642] mmc0: pass window [67 210) 
+[    3.470616] mmc0: pass window [211 212) 
+[    3.474668] mmc0: pass window [213 214) 
+[    3.478740] mmc0: pass window [215 216) 
+[    3.484037] mmc0: pass window [224 255) 
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: clean, 304021/3624816 files, 13670159/15432704 blocks
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Timed out while waiting for udev queue to empty.
+[  OK  ] Created slice system-systemd\x2dfs…slice - Slice /system/systemd-fsck.
+         Starting systemd-udevd.service - R…ager for Device Events and Files...
+OrangePI login: [  OK  ] Removed slice system-modprobe.slice - Slice /system/modprobe.
+[  102.125755] reboot: Power down
+sys: 0x200
+try sd...
+bm:3
+U-Boot SPL 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.567] Boot from fit configuration x1_orangepi-rv2
+U-Boot 2022.10_armbian-2022.10-Sd61c-P76af-H4e64-Vc38c-B5da4-R448a (Aug 19 2026 - 16:28:18 +0000)
+[   0.775] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+[   0.999] Found 2 valid MAC addresses.
+[   1.374] MAC mapping file path not set in environment
+[   2.412] Loading K1 environment
+[   2.458] Booting from mmc 0:1 ...
+[   2.458] Retrieving file: /boot/extlinux/extlinux.conf
+[   2.494] Retrieving file: /boot/uInitrd
+[   3.358] Retrieving file: /boot/Image
+[   4.359] append: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles
+[   4.377] Retrieving file: /boot/dtb/spacemit/k1-orangepi-rv2.dtb
+[   4.431]    Uncompressing Kernel Image
+Starting kernel ...
+[    0.000000] Linux version 6.18.55-current-spacemit (build@armbian) (riscv64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT_DYNAMIC Sat Oct  3 13:35:39 UTC 2026
+[    0.000000] Kernel command line: root=UUID=<ROOT_UUID> earlycon=sbi console=tty1 console=ttyS0,115200 loglevel=6 rw no_console_suspend consoleblank=0 fsck.fix=yes fsck.repair=yes net.ifnames=0 splash plymouth.ignore-serial-consoles swiotlb=65536 rdinit=/init
+[    3.449199] mmc0: pass window [11 66) 
+[    3.457599] mmc0: pass window [69 209) 
+[    3.461545] mmc0: pass window [210 211) 
+[    3.465600] mmc0: pass window [212 213) 
+[    3.469633] mmc0: pass window [214 215) 
+[    3.474896] mmc0: pass window [224 255) 
+Loading, please wait...
+Starting systemd-udevd version 257.13-1~deb13u1
+Timed out while waiting for udev queue to empty.
+Begin: Loading essential drivers ... done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... Scanning for Btrfs filesystems
+Timed out while waiting for udev queue to empty.
+Begin: Will now check root file system ... fsck from util-linux 2.41.5
+[/sbin/fsck.ext4 (1) -- /dev/mmcblk0p1] fsck.ext4 -y -C0 /dev/mmcblk0p1 
+e2fsck 1.47.2 (1-Jan-2025)
+armbi_root: clean, 304022/3624816 files, 13670621/15432704 blocks
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... Timed out while waiting for udev queue to empty.
+[  OK  ] Created slice system-systemd\x2dfs…slice - Slice /system/systemd-fsck.
+         Starting systemd-udevd.service - R…ager for Device Events and Files...
+OrangePI login: 

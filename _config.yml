@@ -1,0 +1,3 @@
+title: How to fix boot problems on the Orange Pi RV2
+description: A field report on fixing intermittent boot failures on the Orange Pi RV2 with Armbian, and why reboot still does not work.
+theme: jekyll-theme-minimal

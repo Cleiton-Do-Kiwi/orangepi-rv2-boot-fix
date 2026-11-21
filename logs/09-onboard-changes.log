@@ -1,0 +1,205 @@
+OrangePi RV2 (Armbian, SpacemiT K1 / Ky X1) - troubleshooting log
+================================================================
+Laptop: NixOS, serial console on /dev/ttyUSB0 @ 115200 8N1.
+Board: OrangePi RV2, 4 GiB RAM, booting from 64 GB microSD (mmcblk0),
+       plus 128 GB NVMe mounted at /mnt/ssd (only app configs/personal data).
+Power: USB-C phone charger (model/rating to be confirmed), small heatsink.
+Known: reboot via software does not work; cold boot after unplugging 5+ min
+       sometimes recovers (capacitor-discharge theory from hydrogen18 blog).
+
+------------------------------------------------------------------
+2026-11-21 - Session 1 - initial diagnosis (READ ONLY so far)
+------------------------------------------------------------------
+State when started: board stuck at initramfs rescue prompt. Serial log
+(orangepi-booting-log-trough-serial) shows:
+  - SPL/U-Boot/DDR/kernel load all succeed, boot from mmc 0:1.
+  - U-Boot: "*** Warning - bad CRC, using default environment"
+  - U-Boot: "MAC mapping file path not set in environment"
+  - initramfs: "Timed out while waiting for udev queue to empty" x3
+  - root /dev/mmcblk0p1 (ext4 label armbi_root) fsck OK, journal recovered
+  - run-init: "opening console: No such file or directory"
+  - run-init: "Target filesystem doesn't have requested /sbin/init."
+  - "No init found. Try passing init= bootarg."
+ => failure is a ROOT FILESYSTEM problem, not bootloader/power, this time.
+
+No changes made to the board yet.
+Serial access method: user chowns /dev/ttyUSB0 to user (one-time, per boot).
+Helper: ./serial.sh (stty raw + cat capture) - host-side only.
+
+Follow-up (read-only) findings from the live initramfs shell:
+  - Board is ALIVE, kernel 6.18.55-current-spacemit (Armbian 26.11 trunk, Debian 13).
+  - Root /dev/mmcblk0p1 (ext4, label armbi_root) mounts fine, /sbin/init exists,
+    and `chroot /root /sbin/init` actually executes systemd 257. Rootfs is OK.
+  - Real failure: /usr/share/initramfs-tools/scripts/init-bottom/udev is
+    `#!/bin/sh -e` and starts with `udevadm settle --timeout=60`.
+    At boot, udev never empties its queue within 60s, so the script aborts
+    BEFORE `mount --move /dev /root/dev`.
+    Result: /root/dev is empty -> /root/dev/console missing -> run-init fails
+    ("Target filesystem doesn't have requested /sbin/init", "No init found").
+  - udev timeline from /run/udev/data timestamps: 290 of 293 device records
+    are processed within ~12s; only b179:1 (mmcblk0p1) and c10:234
+    (/dev/btrfs-control, appears when btrfs module loads) are processed at
+    ~121s and ~131s. Root is mounted at t=135s.
+  - Three `udevadm settle` timeouts per boot (~60s each) explain the ~4 min
+    boot: init-top/udev (bare `udevadm settle || true`), a `wait_for_udev`
+    call with no timeout, and init-bottom/udev (fatal, the boot killer).
+  - Root UUID is resolved with blkid (direct device scan) plus
+    `wait_for_udev 10`; it does NOT depend on udev by-uuid symlinks, and the
+    SD card/partition is registered at t=3.2s. So shortening the udev waits
+    is safe on this board.
+  - U-Boot still reports "bad CRC, using default environment" and
+    "MAC mapping file path not set" (separate issue, not fixed yet).
+
+Planned change (awaiting user consent):
+  1. Patch (with .pre-udevfix backups) three initramfs source scripts:
+       scripts/functions      : settle timeout -> 20s, never fails
+       scripts/init-top/udev  : settle timeout -> 20s, never fails
+       scripts/init-bottom/udev: settle timeout -> 180s, never fails (|| true)
+  2. Apply the same patch to the *current* initrd by extract/patch/repack:
+       /boot/initrd.img-6.18.55-current-spacemit
+       /boot/uInitrd-6.18.55-current-spacemit (rebuild with mkimage -A riscv)
+     with .pre-udevfix backups, and verify by diffing extracted trees.
+  3. Temporarily set loglevel=6 in /boot/extlinux/extlinux.conf for the next
+     boot (backup kept) so the udev/boot timeline is visible.
+  4. Requires a manual power cycle (software reboot is broken on this board).
+
+------------------------------------------------------------------
+2026-11-21 ~03:40-03:46 UTC - change executed
+------------------------------------------------------------------
+  * Patch script /var/tmp/fix-initrd.sh written on the board (sha256 e0bf9f14...).
+  * Three source scripts patched (backups *.pre-udevfix):
+      /usr/share/initramfs-tools/scripts/functions
+      /usr/share/initramfs-tools/scripts/init-top/udev
+      /usr/share/initramfs-tools/scripts/init-bottom/udev
+    New content:
+      functions:        udevadm settle --timeout="${1:-20}" || true
+      init-top/udev:    udevadm settle --timeout=20 || true
+      init-bottom/udev: udevadm settle --timeout=180 || true
+  * First manual-repack attempt aborted safely: initrd.img is NOT gzip; it is a
+    concatenation of cpio archives (raw cpio magic 070701, cpio -t stops after
+    1.9 MB / 166 entries). No boot files were modified by that attempt.
+  * Used the proper tool instead: `update-initramfs -u -k 6.18.55-current-spacemit`
+    (run chrooted from the initramfs shell; /dev,/proc,/sys bind-mounted then
+    unmounted). It regenerated initrd.img + uInitrd via Armbian's 99-uboot hook.
+  * Backups (original, verified sha256):
+      /boot/initrd.img-6.18.55-current-spacemit.pre-udevfix  ab1f5cef...
+      /boot/uInitrd-6.18.55-current-spacemit.pre-udevfix     65d83c4e...
+      /boot/extlinux/extlinux.conf.pre-udevfix
+  * New files:
+      initrd.img sha256 16b3288a... ; uInitrd data sha256 identical
+  * Verified with unmkinitramfs that the new initramfs contains the patched
+     hooks (and harmless *.pre-udevfix copies inside the initramfs).
+  * /boot/extlinux/extlinux.conf append changed loglevel=1 -> loglevel=6
+    (temporary, for diagnosis).
+  * Power cycle requested (unplug ~20s) with boot captured to boot-new.log.
+
+RESULT: BOOT SUCCESSFUL. Board reached multi-user, SSH on 192.168.x.x works,
+all services started (uptime 5 min). Rootfs remounted rw, no MMC/EXT4 errors.
+
+Problem introduced by the patch: backups named `*.pre-udevfix` were left inside
+the scanned initramfs script directories and are executable, so run_scripts also
+executed them:
+  - /usr/share/initramfs-tools/scripts/init-top/udev.pre-udevfix
+  - /usr/share/initramfs-tools/scripts/init-bottom/udev.pre-udevfix
+Effect: a second systemd-udevd was started in the initramfs and two udevds are
+now running (PID 193 initramfs + PID 388 systemd). Boot still succeeded but took
+~3.6 min (root mounted at t=156s). Fix: move those backups out of the scanned
+directories, regenerate initramfs, kill the stray udevd.
+
+Watchdog findings on the running system (kernel 6.18.55 mainline-ish):
+  - CONFIG_SPACEMIT_WATCHDOG=y (NOT the old buggy CONFIG_KY_WATCHDOG from the blog)
+  - /dev/watchdog, /dev/watchdog0 exist; driver logs "System boots up not
+    because of SoC watchdog reset."
+  - CONFIG_WATCHDOG_SYSFS is not set, so /sys/class/watchdog/watchdog0 has no
+    identity/timeout/state attributes; ioctl use via /dev/watchdog still works.
+  - DT has watchdog@d4080000, no "spa,wdt-enable-restart-handler" property.
+  - systemd: RuntimeWatchdogUSec=0 (off), RebootWatchdogUSec=10min.
+  Reboot behaviour still untested on this kernel.
+
+------------------------------------------------------------------
+2026-11-21 ~01:15-01:30 - reboot / SD-card wedge test
+------------------------------------------------------------------
+  * Enabled the hardware watchdog in systemd for reboot safety:
+      /etc/systemd/system.conf.d/10-watchdog.conf
+        RuntimeWatchdogSec=60s
+        RebootWatchdogSec=15s
+        ShutdownWatchdogSec=15s
+    systemd logs: "Using hardware watchdog 'K1X Watchdog', version 0,
+    device /dev/watchdog0", RuntimeWatchdogUSec=1min, PID 1 holds it.
+  * `sudo reboot` result:
+      - systemd reached reboot.target, kernel printed "reboot: Restarting system".
+      - SoC reset, U-Boot SPL ran, but the SD card was WEDGED:
+          "mmc fail to set block count"
+          "** fs_devread read error - block"
+          "Failed to mount ext2 filesystem..."
+          "Skipping Armbian_community for failure retrieving initrd"
+          "** No partition table - mmc 0 **"
+      - U-Boot then tried mmc 1:1 and mmc 2:1 (NVMe) and dropped to `=>`.
+  * At the U-Boot prompt the card answers `mmc info` (SE64G, 59.5 GiB) but every
+    `mmc read` returns "0 blocks read: ERROR", even for the MBR sector and the
+    first partition sector. `mmc part` only shows a cached table.
+    `mmc rescan`, `mmc dev 0`, and speed changes do NOT recover data reads.
+  * `poweroff` at the U-Boot prompt + power-button start produced the SAME wedge
+    on the next cold boot (SPL ran, U-Boot still couldn't read mmc 0).
+  * Conclusion: a warm SoC reset (and even a short button power cycle) leaves the
+    SD card/controller unable to do data transfers. Only a real removal of power
+    for minutes restores it. This is the hardware limitation from the blog, and
+    it is independent of the initramfs fix.
+  * systemd watchdog does reset the SoC, but lands in U-Boot with the wedged card,
+    so it is NOT a reboot fix.
+
+  * Kernel driver audit (Armbian 6.18.55-current-spacemit):
+      - Driver is vendor drivers/watchdog/k1x_wdt.c (symbols spa_wdt_*), not
+        mainline; boot message "System boots up not because of SoC watchdog reset."
+      - It still declares a global `static spinlock_t reboot_lock;` and only
+        `spin_lock_init(&info->wdt_lock)` exists; reboot_lock is NOT initialized.
+        => the blog's "BUG: spinlock bad magic" bug is still present in source.
+      - DTB has `spa,wdt-disabled` but NOT `spa,wdt-enable-restart-handler`;
+        therefore the restart handler is not registered (matches the hang).
+      - The blog's kernel fixes are NOT in this kernel.
+
+------------------------------------------------------------------
+2026-11-21 01:29+ - 10 cold-boot reliability test
+------------------------------------------------------------------
+Method: Linux `poweroff` (verified: red LED goes OFF, true rail cut) ->
+        user presses power button -> measure SSH availability.
+Note: U-Boot `poweroff` does NOT cut the rails (red LED stays on), so never
+      use that for a cold boot.
+
+#1  2026-11-21 01:28:05  SUCCESS  SSH up ~87s  systemd-analyze 1:19.7
+   (kernel 55.8s + userspace 23.9s), single systemd-udevd, clean login.
+   Preceded by: init-bottom settle reduced 180s -> 20s + initramfs rebuilt.
+#2  2026-11-21 01:30:48  SUCCESS  SSH up ~74s  systemd-analyze 1:18.7  single udevd
+#3  2026-11-21 01:33:46  SUCCESS  SSH up ~88s  systemd-analyze 1:20.7  single udevd
+#4  2026-11-21 01:36:22  SUCCESS  SSH up ~82s  systemd-analyze 1:20.2  single udevd
+#5  2026-11-21 01:38:23  SUCCESS  SSH up ~84s  systemd-analyze 1:21.0  single udevd
+#6  2026-11-21 01:40:28  SUCCESS  SSH up ~87s  systemd-analyze 1:20.1  single udevd
+#7  2026-11-21 01:46:18  SUCCESS  SSH up ~73s  systemd-analyze 1:20.6  single udevd
+   (first SSH probes were made too early, right after boot start; board was up
+    and at a normal serial login. 7/7 cold boots succeeded; user stopped here.)
+Optimization after #7: initramfs settle caps 20s -> 10s in init-top/udev,
+   init-bottom/udev, and functions; initramfs regenerated and verified.
+   Expected kernel time ~30s instead of ~56s (total ~55s). To be validated by
+   one more cold boot (Linux poweroff -> button).
+
+Validation:
+  10s build: SUCCESS, 59.677s (kernel 35.641s + userspace 24.022s), SSH ~40s.
+  Then caps reduced to 3s (init-top, init-bottom, functions) and rebuilt.
+  Final cold boot 2026-11-21 01:59:56: SUCCESS, SSH up in 38s,
+  systemd-analyze 38.677s (kernel 14.740s + userspace 23.937s), single udevd.
+  => 9/9 clean cold boots total (7 in the requested series + the 10 s and 3 s
+     validation boots). The first post-fix boot also succeeded but had the
+     duplicate-hook mistake and is counted separately.
+
+Cleanup done:
+  - extlinux loglevel reverted 6 -> 1 (takes effect next boot).
+  - temporary /etc/systemd/system.conf.d/10-watchdog.conf removed;
+    RuntimeWatchdogUSec=0.
+  - temporary NOPASSWD sudo rule removed; verified SUDO_NEEDS_PASS.
+  - /var/tmp extraction dirs cleaned; /var/tmp/fix-initrd.{sh,log} and
+    /var/backups/opirv2-udevfix kept for reference.
+  - Rootfs is 90% used (6.2G free) - worth watching.
+Remaining, by user's choice: reboot is not fixed (warm reset wedges the SD
+card); use `poweroff` + power button. Pre-existing dnscrypt-proxy-resolvconf
+service failure is unrelated.
+
